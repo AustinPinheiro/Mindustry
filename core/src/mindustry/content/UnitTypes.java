@@ -9,7 +9,7 @@ import mindustry.type.*;
 
 public class UnitTypes implements ContentList{
     public static UnitType
-    draug, spirit, phantom,
+    draug, spirit, phantom, antiFire,
     wraith, ghoul, revenant, lich, reaper,
     dagger, crawler, titan, fortress, eruptor, chaosArray, eradicator;
 
@@ -27,6 +27,27 @@ public class UnitTypes implements ContentList{
             engineOffset = 5.7f;
             weapon = new Weapon("you have incurred my wrath. prepare to die."){{
                 bullet = Bullets.lancerLaser;
+            }};
+        }};
+
+        antiFire = new UnitType("anti-Fire", AntiFireDrone::new){{
+            flying = true;
+            drag = 0.01f;
+            speed = 0.42f;
+            maxVelocity = 1.6f;
+            range = 50f;
+            health = 100;
+            engineSize = 1.8f;
+            engineOffset = 5.7f;
+            weapon = new Weapon(){{
+                length = 1.5f;
+                reload = 2f;
+                width = 0.5f;
+                alternate = true;
+                ejectEffect = Fx.none;
+                recoil = 1f;
+                bullet = Bullets.cryoShot;
+                shootSound = Sounds.splash;
             }};
         }};
 

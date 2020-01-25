@@ -77,7 +77,7 @@ public class Blocks implements ContentList{
 
     //units
     commandCenter, draugFactory, spiritFactory, phantomFactory, wraithFactory, ghoulFactory, revenantFactory, daggerFactory, crawlerFactory, titanFactory,
-    fortressFactory, repairPoint,
+    fortressFactory, repairPoint, antiFire,
 
     //upgrades
     dartPad, deltaPad, tauPad, omegaPad, javelinPad, tridentPad, glaivePad;
@@ -1636,6 +1636,16 @@ public class Blocks implements ContentList{
             requirements(Category.units, ItemStack.with(Items.copper, 30, Items.lead, 70));
             unitType = UnitTypes.draug;
             produceTime = 2500;
+            size = 2;
+            maxSpawn = 1;
+            consumes.power(1.2f);
+            consumes.items();
+        }};
+
+        antiFire = new UnitFactory("antiFire-factory"){{
+            requirements(Category.units, ItemStack.with(Items.copper, 5, Items.lead, 5));
+            unitType = UnitTypes.antiFire;
+            produceTime = 500;
             size = 2;
             maxSpawn = 1;
             consumes.power(1.2f);
