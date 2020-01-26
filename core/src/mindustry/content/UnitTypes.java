@@ -35,7 +35,7 @@ public class UnitTypes implements ContentList{
             drag = 0.01f;
             speed = 0.42f;
             maxVelocity = 1.6f;
-            range = 50f;
+            range = 30f;
             health = 100;
             engineSize = 1.8f;
             engineOffset = 5.7f;

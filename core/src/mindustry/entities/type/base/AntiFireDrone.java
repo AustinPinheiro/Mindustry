@@ -24,57 +24,36 @@ public class AntiFireDrone extends BaseDrone{
 
             boolean targetFound = false;
             if(retarget()){
+                //convert from drone space to tile space (not 100% accurate)
                 int xTile = (int)x / 8;
                 int yTile = (int)y / 8;
 
-                int range = 30;
+                //calculate and store variables
+                int range = (int) type.range;
                 int xMin = xTile-range;
                 int xMax = xTile+range;
                 int yMin = yTile-range;
                 int yMax = yTile+range;
 
-                /*
-                int half = (int)max / 3;
-
-                targetFound = TestFire(xTile, yTile, 0, 0, half, half,1,1);
-                if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, half, half,1,-1);
-                }else if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, half, half,-1,-1);
-                }else if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, half, half,-1,1);
-                }
-
-                if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, max, max,1,1);
-                }else if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, max, max,1,-1);
-                }else if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, max, max,-1,-1);
-                }else if(!targetFound){
-                    targetFound = TestFire(xTile, yTile, 0, 0, max, max,-1,1);
-                }
-                 */
-                Array<Tile> tiles = new Array<Tile>();
+                //Loop though all possible tiles in range and store those that have fire
+                Array<Tile> tiles = new Array<>();
 
                 for(int rx = xMin; rx <= xMax; rx++){
                     for(int ry = yMin; ry <= yMax; ry++){
                         if(Fire.has(rx, ry)){
                             Tile t = world.tile(rx, ry);
-                            //target = t;
                             tiles.add(t);
                             targetFound = true;
                         }
                     }
                 }
 
+                //the target is closed fire tile.
                 target = Geometry.findClosest(x, y, tiles);
 
                 if(!targetFound){
                     target = null;
                 }
-
-
             }
 
             if(target != null){
@@ -93,23 +72,6 @@ public class AntiFireDrone extends BaseDrone{
             }
         }
     };
-
-    /*
-    private boolean TestFire(int px, int py,int xMin, int yMin, int xMax , int yMax , int xInvert , int yInvert){
-        for(int rx = xMin; rx <= xMax; rx++){
-            for(int ry = yMin; ry <= yMax; ry++){
-                int bx = rx * xInvert;
-                int by = ry * yInvert;
-
-                if(Fire.has(bx + px, by + py)){
-                    target = world.tile(bx + px, by + py);
-                    return true;
-                }
-            }
-        }
-        return  false;
-    }
-     */
 
     @Override
     public boolean shouldRotate(){
