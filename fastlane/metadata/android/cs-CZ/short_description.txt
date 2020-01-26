@@ -1,1 +1,1 @@
-Hra typu tower-defense s otevřeným koncem, zaměřená na řízení zdrojů.
+﻿Hra typu tower-defense s otevřeným koncem, zaměřená na řízení zdrojů.
