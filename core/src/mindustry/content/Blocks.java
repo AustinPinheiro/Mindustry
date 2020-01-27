@@ -656,10 +656,10 @@ public class Blocks implements ContentList{
         }};
 
         sporePress = new GenericCrafter("spore-press"){{
-            requirements(Category.crafting, ItemStack.with(Items.lead, 35, Items.silicon, 30));
+            requirements(Category.crafting, ItemStack.with(Items.lead, 35, Items.silicon, 35));
             liquidCapacity = 60f;
-            craftTime = 20f;
-            outputLiquid = new LiquidStack(Liquids.oil, 6f);
+            craftTime = 25f;
+            outputLiquid = new LiquidStack(Liquids.oil, 5f);
             size = 2;
             health = 320;
             hasLiquids = true;
@@ -667,7 +667,7 @@ public class Blocks implements ContentList{
             craftEffect = Fx.none;
 
             consumes.item(Items.sporePod, 1);
-            consumes.power(0.60f);
+            consumes.power(1.35f);
 
             int[] frameRegions = new int[3];
             for(int i = 0; i < 3; i++){
@@ -717,12 +717,12 @@ public class Blocks implements ContentList{
             requirements(Category.crafting, ItemStack.with(Items.titanium, 20, Items.graphite, 40, Items.lead, 30));
             craftEffect = Fx.smeltsmoke;
             outputItem = new ItemStack(Items.coal, 1);
-            craftTime = 30f;
+            craftTime = 33f;
             size = 2;
             hasPower = hasItems = hasLiquids = true;
 
             consumes.liquid(Liquids.oil, 0.09f);
-            consumes.power(0.5f);
+            consumes.power(0.95f);
         }};
 
         incinerator = new Incinerator("incinerator"){{
@@ -988,12 +988,12 @@ public class Blocks implements ContentList{
         //region liquid
 
         mechanicalPump = new Pump("mechanical-pump"){{
-            requirements(Category.liquid, ItemStack.with(Items.copper, 15, Items.metaglass, 10));
+            requirements(Category.liquid, ItemStack.with(Items.copper, 15, Items.metaglass, 8));
             pumpAmount = 0.1f;
         }};
 
         rotaryPump = new Pump("rotary-pump"){{
-            requirements(Category.liquid, ItemStack.with(Items.copper, 70, Items.metaglass, 50, Items.silicon, 20, Items.titanium, 35));
+            requirements(Category.liquid, ItemStack.with(Items.copper, 70, Items.metaglass, 45, Items.silicon, 20, Items.titanium, 35));
             pumpAmount = 0.8f;
             consumes.power(0.15f);
             liquidCapacity = 30f;
@@ -1002,7 +1002,7 @@ public class Blocks implements ContentList{
         }};
 
         thermalPump = new Pump("thermal-pump"){{
-            requirements(Category.liquid, ItemStack.with(Items.copper, 80, Items.metaglass, 70, Items.silicon, 30, Items.titanium, 40, Items.thorium, 35));
+            requirements(Category.liquid, ItemStack.with(Items.copper, 80, Items.metaglass, 60, Items.silicon, 30, Items.titanium, 40, Items.thorium, 35));
             pumpAmount = 1.5f;
             consumes.power(0.30f);
             liquidCapacity = 40f;
@@ -1139,14 +1139,14 @@ public class Blocks implements ContentList{
         }};
 
         solarPanel = new SolarGenerator("solar-panel"){{
-            requirements(Category.power, ItemStack.with(Items.lead, 10, Items.silicon, 15));
-            powerProduction = 0.06f;
+            requirements(Category.power, ItemStack.with(Items.lead, 20, Items.silicon, 9 , Items.graphite , 6));
+            powerProduction = 0.08f;
         }};
 
         largeSolarPanel = new SolarGenerator("solar-panel-large"){{
-            requirements(Category.power, ItemStack.with(Items.lead, 100, Items.silicon, 145, Items.phasefabric, 15));
+            requirements(Category.power, ItemStack.with(Items.lead, 100, Items.silicon, 80, Items.phasefabric, 25, Items.plastanium,15));
             size = 3;
-            powerProduction = 0.9f;
+            powerProduction = 1.1f;
         }};
 
         thoriumReactor = new NuclearReactor("thorium-reactor"){{
@@ -1223,7 +1223,7 @@ public class Blocks implements ContentList{
         }};
 
         waterExtractor = new SolidPump("water-extractor"){{
-            requirements(Category.production, ItemStack.with(Items.copper, 25, Items.graphite, 25, Items.lead, 20));
+            requirements(Category.production, ItemStack.with(Items.copper, 25, Items.graphite, 20, Items.lead, 20 , Items.metaglass , 12));
             result = Liquids.water;
             pumpAmount = 0.13f;
             size = 2;
@@ -1231,7 +1231,7 @@ public class Blocks implements ContentList{
             rotateSpeed = 1.4f;
             attribute = Attribute.water;
 
-            consumes.power(1f);
+            consumes.power(1.15f);
         }};
 
         cultivator = new Cultivator("cultivator"){{
@@ -1243,8 +1243,8 @@ public class Blocks implements ContentList{
             hasPower = true;
             hasItems = true;
 
-            consumes.power(0.80f);
-            consumes.liquid(Liquids.water, 0.18f);
+            consumes.power(1.45f);
+            consumes.liquid(Liquids.water, 0.16f);
         }};
 
         oilExtractor = new Fracker("oil-extractor"){{
